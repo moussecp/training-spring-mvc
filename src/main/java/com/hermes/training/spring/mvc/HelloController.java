@@ -13,6 +13,6 @@ public class HelloController {
     public ModelAndView helloWorld() {
         String message = "<br><div style='text-align:center;'>"
                 + "<h3>********** Hello World, Spring MVC Tutorial</h3>This message is coming from Spring MVC **********</div><br><br>";
-        return new ModelAndView("welcome", "message", message);
+        return new ModelAndView("hello", "message", message);
     }
 }
