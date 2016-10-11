@@ -1,0 +1,80 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         metadata-complete="true"
+         version="3.1">
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/training-servlet.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>training</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>training</servlet-name>
+        <url-pattern>/hello.jsp</url-pattern>
+        <url-pattern>/hello.html</url-pattern>
+        <url-pattern>*.html</url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!---->
+    <!--<display-name>Rentals</display-name>-->
+
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>org.pas.rentals.config.RentalsMainConfiguration</param-value>-->
+    <!--</context-param>-->
+
+    <!--&lt;!&ndash; Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext-->
+        <!--instead of the default XmlWebApplicationContext &ndash;&gt;-->
+    <!--<context-param>-->
+        <!--<param-name>contextClass</param-name>-->
+        <!--<param-value>-->
+            <!--org.springframework.web.context.support.AnnotationConfigWebApplicationContext-->
+        <!--</param-value>-->
+    <!--</context-param>-->
+
+    <!--&lt;!&ndash; Bootstrap the root application context as usual using ContextLoaderListener &ndash;&gt;-->
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
+
+    <!--&lt;!&ndash; Declare a Spring MVC DispatcherServlet as usual &ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>Rentals</servlet-name>-->
+        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
+        <!--&lt;!&ndash; Configure DispatcherServlet to use AnnotationConfigWebApplicationContext-->
+            <!--instead of the default XmlWebApplicationContext &ndash;&gt;-->
+        <!--<init-param>-->
+            <!--<param-name>contextClass</param-name>-->
+            <!--<param-value>-->
+                <!--org.springframework.web.context.support.AnnotationConfigWebApplicationContext-->
+            <!--</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>contextConfigLocation</param-name>-->
+            <!--<param-value>org.pas.rentals.web.RentalsWebMvcConfiguration</param-value>-->
+        <!--</init-param>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>Rentals</servlet-name>-->
+        <!--<url-pattern>/resource/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+</web-app>
