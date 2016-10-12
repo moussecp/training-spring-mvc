@@ -42,7 +42,7 @@
         to load by setting the contextConfigLocation parameter in the servlet context-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/training-servlet.xml</param-value>
+        <param-value>/WEB-INF/training-servlet.xml /WEB-INF/web-application-config.xml</param-value>
     </context-param>
 
 </web-app>

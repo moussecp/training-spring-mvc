@@ -19,6 +19,9 @@
         <a href="hello.html">Click here to See Welcome Message... </a>(to
         check Spring MVC Controller... @RequestMapping("/hello"))
     </h3>
+    <h3>
+        <a href="listCourses.html">Click here to the courses</a>
+    </h3>
 </div>
 </body>
 </html>

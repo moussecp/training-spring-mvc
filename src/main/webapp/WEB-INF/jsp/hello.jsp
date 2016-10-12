@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Hello World Spring MVC</title>
         <style type="text/css">
             body {

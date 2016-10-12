@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--URL MAPPING Using SimpleUrlHandlerMapping-->
+    <!-- Maps request URIs to controllers -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="0"/> <!--handles concurrency between UrlHandlerMapping-->
+        <property name="mappings">
+            <!-- SimpleUrlHandlerMapping’s mappings property is wired with a java.util.Properties using <props>.
+            The key attribute of each <prop> element is a URL pattern. -->
+            <props>
+                <prop key="/listCourses.htm">listCoursesController</prop>
+            </props>
+        </property>
+    </bean>
+    <!--/URL MAPPING Using SimpleUrlHandlerMapping-->
+
+    <!-- URL MAPPING Mapping URLs to bean names -->
+<!--    <bean id="beanNameUrlMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+        <property name="order"><value>1</value></property>
+    </bean>
+
+    <bean name="/listCourses.htm" class="com.hermes.training.spring.mvc.ListCoursesController"/>-->
+    <!-- /URL MAPPING Mapping URLs to bean names -->
+
+</beans>
