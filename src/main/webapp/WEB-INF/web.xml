@@ -9,72 +9,40 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/training-servlet.xml</param-value>
-    </context-param>
-
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
+    <!-- Like any servlet, DispatcherServlet must be configured in your web application’s web.xml file -->
+    <!-- The <servlet-name> given to the servlet is significant. By default, when DispatcherServlet is loaded, it will
+        load the Spring application context from an XML file whose name is based on the name of the servlet.
+        In this case, because the servlet is named training, DispatcherServlet will try to load the application context
+        from a file named training-servlet.xml.-->
     <servlet>
         <servlet-name>training</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!-- You must indicate what URLs will be handled by the DispatcherServlet -->
     <servlet-mapping>
         <servlet-name>training</servlet-name>
-        <url-pattern>/hello.jsp</url-pattern>
-        <url-pattern>/hello.html</url-pattern>
-        <url-pattern>*.html</url-pattern>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <!---->
-    <!--<display-name>Rentals</display-name>-->
 
-    <!--<context-param>-->
-        <!--<param-name>contextConfigLocation</param-name>-->
-        <!--<param-value>org.pas.rentals.config.RentalsMainConfiguration</param-value>-->
-    <!--</context-param>-->
+    <!-- Depending on how you’ll be deploying your application, you have two context loaders to
+        choose from: ContextLoaderListener and ContextLoaderServlet.
+        Most likely, you’ll be deploying to a web container that supports the
+        Servlet 2.3 specification (or higher) and initializes servlet listeners before servlets. If that’s the case,
+        you’ll want to configure ContextLoaderListener in your web.xml file as follows -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
-    <!--&lt;!&ndash; Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext-->
-        <!--instead of the default XmlWebApplicationContext &ndash;&gt;-->
-    <!--<context-param>-->
-        <!--<param-name>contextClass</param-name>-->
-        <!--<param-value>-->
-            <!--org.springframework.web.context.support.AnnotationConfigWebApplicationContext-->
-        <!--</param-value>-->
-    <!--</context-param>-->
-
-    <!--&lt;!&ndash; Bootstrap the root application context as usual using ContextLoaderListener &ndash;&gt;-->
-    <!--<listener>-->
-        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-    <!--</listener>-->
-
-    <!--&lt;!&ndash; Declare a Spring MVC DispatcherServlet as usual &ndash;&gt;-->
-    <!--<servlet>-->
-        <!--<servlet-name>Rentals</servlet-name>-->
-        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
-        <!--&lt;!&ndash; Configure DispatcherServlet to use AnnotationConfigWebApplicationContext-->
-            <!--instead of the default XmlWebApplicationContext &ndash;&gt;-->
-        <!--<init-param>-->
-            <!--<param-name>contextClass</param-name>-->
-            <!--<param-value>-->
-                <!--org.springframework.web.context.support.AnnotationConfigWebApplicationContext-->
-            <!--</param-value>-->
-        <!--</init-param>-->
-        <!--<init-param>-->
-            <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value>org.pas.rentals.web.RentalsWebMvcConfiguration</param-value>-->
-        <!--</init-param>-->
-    <!--</servlet>-->
-
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>Rentals</servlet-name>-->
-        <!--<url-pattern>/resource/*</url-pattern>-->
-    <!--</servlet-mapping>-->
-
+    <!-- If not specified otherwise, the context loader will look for a Spring configuration file at
+        /WEB-INF/applicationContext.xml. But this location doesn’t lend itself to breaking up the application
+        context across application layers, so you’ll need to override this default.
+        You can specify one or more Spring configuration files for the context loader
+        to load by setting the contextConfigLocation parameter in the servlet context-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/training-servlet.xml</param-value>
+    </context-param>
 
 </web-app>
